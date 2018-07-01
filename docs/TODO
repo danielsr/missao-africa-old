@@ -1,0 +1,9 @@
+[x] Sponsors list component
+[ ] Merge schemas and resolvers
+[x] Loading component
+[ ] Toaster
+[ ] Handle graphql errors
+[ ] Auth with token
+[ ] Login
+[ ] Fixed Footer
+[ ] Add FontAwesome icons

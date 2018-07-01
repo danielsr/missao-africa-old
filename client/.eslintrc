@@ -1,0 +1,20 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "rules": {
+    "comma-dangle": "off",
+    "semi": [
+      "off",
+      "never"
+    ],
+    "react/prefer-stateless-function": "off",
+    "function-paren-newline": "off",
+    "import/prefer-default-export": "off",
+    "react/jsx-filename-extension": "off",
+    "react/require-default-props": "off",
+    "react/forbid-prop-types": "off",
+    "object-curly-newline": "off",
+    "react/no-array-index-key": "off",
+    "react/jsx-one-expression-per-line": "off"
+  }
+}
