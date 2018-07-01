@@ -1,7 +1,6 @@
-import { combineReducers } from 'redux'
 import { types } from './actions'
 
-const isLoading = (state = false, action) => {
+export const isLoading = (state = false, action) => {
   switch (action.type) {
     case types.SET_LOADING:
       return action.isLoading
@@ -10,7 +9,7 @@ const isLoading = (state = false, action) => {
   }
 }
 
-const msg = (state = null, action) => {
+export const msg = (state = null, action) => {
   switch (action.type) {
     case types.SET_MSG:
       return action.msg
@@ -18,8 +17,3 @@ const msg = (state = null, action) => {
       return state
   }
 }
-
-export default combineReducers({
-  isLoading,
-  msg
-})

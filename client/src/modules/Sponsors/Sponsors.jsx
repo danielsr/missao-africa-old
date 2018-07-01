@@ -12,15 +12,7 @@ class Sponsors extends Component {
 
     return (
       <Page title="Padrinhos">
-        {sponsors
-          && (
-            <Grid
-              keyField="_id"
-              fields={fields}
-              items={sponsors}
-            />
-          )
-        }
+        {sponsors && <Grid keyField="_id" fields={fields} items={sponsors} />}
       </Page>
     )
   }

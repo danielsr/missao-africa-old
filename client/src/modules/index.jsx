@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { ApolloProvider } from 'react-apollo'
-import { store } from '../state'
-import client from '../state/apollo'
+import { store } from './store'
+import client from './apollo'
+import Routes from './routes'
 import Main from './Main'
 
 class App extends Component {
@@ -12,7 +13,9 @@ class App extends Component {
       <Provider store={store}>
         <ApolloProvider client={client}>
           <BrowserRouter>
-            <Main />
+            <Main>
+              <Routes />
+            </Main>
           </BrowserRouter>
         </ApolloProvider>
       </Provider>

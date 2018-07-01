@@ -1,13 +1,13 @@
 {
-  "name": "graphql_fullstack",
+  "name": "missao-africa",
   "version": "1.0.0",
-  "description": "GraphQL Fullstack",
+  "description": "Missao Africa",
   "main": "src/index.js",
   "scripts": {
     "babel": "babel-node src/index.js",
     "start": "nodemon --exec babel-node src/index.js"
   },
-  "author": "Daniel S. Rodrigues",
+  "author": "Daniel Rodrigues",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",

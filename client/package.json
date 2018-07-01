@@ -1,12 +1,12 @@
 {
-  "name": "missao-africa-new",
+  "name": "missao-africa",
   "version": "1.0.0",
   "description": "Missao Africa",
   "author": "Daniel Rodrigues",
   "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
+    "start": "webpack-dev-server --mode development --hot",
     "build": "webpack --mode production"
   },
   "devDependencies": {

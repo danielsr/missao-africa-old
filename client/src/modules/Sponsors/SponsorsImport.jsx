@@ -3,7 +3,7 @@ import remove from 'lodash/remove'
 import { graphql } from 'react-apollo'
 import { connect } from 'react-redux'
 import { compose } from 'recompose'
-import { actions } from '../../state/actions'
+import { actions } from '../Main/actions'
 import { Page, Grid, Button } from '../../core/components'
 import { importSponsors, importFields } from './SponsorsHelper'
 import { importSponsorsMutation } from './graphql'
@@ -50,16 +50,7 @@ class SponsorsImport extends Component {
     return (
       <Page title="Importar Padrinhos">
         <input type="file" onChange={this.importFile} className="mb-4" />
-        {sponsors
-          && (
-            <Grid
-              keyField="id"
-              fields={importFields}
-              items={sponsors}
-              onSelect={this.onSelect}
-            />
-          )
-        }
+        {sponsors && <Grid keyField="id" fields={importFields} items={sponsors} onSelect={this.onSelect} />}
         <Button text="Importar Selecionados" color="primary" onClick={this.saveSelected} />
       </Page>
     )
