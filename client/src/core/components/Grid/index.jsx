@@ -64,7 +64,7 @@ export class Grid extends Component {
     } = this.props
 
     return (
-      <table className="table table-sm table-striped table-hover">
+      <table className="table fill">
         <thead>
           <tr>
             {onSelect && (

@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Button as ButtonStrap } from 'reactstrap'
 
 const Button = (props) => {
   const { text, color, onClick } = props
   return (
-    <ButtonStrap color={color} onClick={() => onClick()}>
+    <button type="submit" className={`btn ${color}`} onClick={() => onClick()}>
       {text}
-    </ButtonStrap>
+    </button>
   )
 }
 

@@ -13,9 +13,12 @@ class Main extends Component {
   render() {
     const { isLoading, msg, children } = this.props
     return (
-      <div>
+      <div className="layout">
         <Header />
-        {children}
+        <div className="main">
+          <span className="fa fa-success" />
+          {children}
+        </div>
         <Footer />
         {isLoading && <Spinner />}
         {msg && <Toast msg={msg} />}

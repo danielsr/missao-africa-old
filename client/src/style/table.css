@@ -1,0 +1,20 @@
+.table {
+  border-spacing: 0px;
+}
+
+.table th, td  {
+  padding: 7px;
+  text-align: left;
+}
+
+.table thead th  {
+  border-bottom: 1px solid var(--color-gray-dark);
+}
+
+.table tbody tr:hover {
+  background-color: var(--color-gray) !important;
+}
+
+.table tbody tr:nth-child(odd)  {
+  background-color: var(--color-gray-light);
+}

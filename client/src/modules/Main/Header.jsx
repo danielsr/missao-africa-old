@@ -8,7 +8,7 @@ const items = [
 
 class Header extends Component {
   render() {
-    return <NavBar title="Missão África" items={items} />
+    return <div className="header"><NavBar title="Missão África" items={items} /></div>
   }
 }
 

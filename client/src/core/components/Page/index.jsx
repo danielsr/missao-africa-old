@@ -5,9 +5,8 @@ export class Page extends Component {
   render() {
     const { title, children } = this.props
     return (
-      <div className="container page">
+      <div className="container">
         <h1>{title}</h1>
-        <hr />
         {children}
       </div>
     )

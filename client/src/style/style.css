@@ -1,0 +1,14 @@
+@import url("var.css");
+@import url("util.css");
+@import url("grid.css");
+@import url("form.css");
+@import url("layout.css");
+@import url("table.css");
+@import url("modal.css");
+
+body {
+  margin: 0px;
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--color-dark);
+}
