@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-export class Grid extends Component {
+class Grid extends Component {
   renderHead = () => {
     const { fields } = this.props
 
@@ -39,21 +39,18 @@ export class Grid extends Component {
           <td className="text-center">
             <input type="checkbox" onChange={({ target: { checked } }) => onSelect(checked, item)} />
           </td>
-        )
-        }
+        )}
         {this.renderFields(item)}
         {editRoute && (
           <td className="text-center">
             <Link to={editRoute + item[keyField]} className="fa fa-edit" />
           </td>
-        )
-        }
+        )}
         {deleteRoute && (
           <td className="text-center">
             <Link to={deleteRoute + item[keyField]} className="fa fa-remove" />
           </td>
-        )
-        }
+        )}
       </tr>
     ))
   }
@@ -101,3 +98,5 @@ Grid.propTypes = {
   deleteRoute: PropTypes.string,
   onSelect: PropTypes.func
 }
+
+export default Grid

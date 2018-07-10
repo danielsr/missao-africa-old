@@ -1,14 +1,7 @@
 import map from 'lodash/map'
 import { readFileAsText } from '../../core/util/file'
 
-const csvColumnMap = {
-  id: 0,
-  joinDate: 1,
-  name: 3,
-  email: 4,
-  phone: 5,
-  cpf: 2
-}
+const csvColumnMap = ['id', 'joinDate', 'cpf', 'name', 'email', 'phone']
 
 export const importFields = [
   { name: 'id', label: 'ID' },
@@ -25,26 +18,13 @@ export const fields = [
   { name: 'email', label: 'E-mail' }
 ]
 
-function getSponsorFromColums(cols) {
-  return map(csvColumnMap, (value, key) => ({ [key]: cols[value] }))
-    .reduce((obj, prop) => Object.assign(obj, prop))
-}
+const getSponsorFromColums = cols => reduce(cols, (final, col, i) => ({ ...final, [id]: csvColumnMap[i] }), {})
 
-function getSponsorsFromCsv(csv) {
-  const sponsors = []
-  const rows = csv.split('\n')
-  rows.shift()
-  rows.pop()
+const getSponsors = row => row.substring(row.indexOf('"') + 1, row.lastIndexOf('"') - 2).split('","')
 
-  rows.forEach((row) => {
-    const cols = row.substring(row.indexOf('"') + 1, row.lastIndexOf('"') - 2).split('","')
-    const sponsor = getSponsorFromColums(cols)
-
-    sponsors.push(sponsor)
-  })
-
-  return sponsors
-}
+const getSponsorsFromCsv = csv =>
+  csv.split('\n').splice(1, -1)
+  .map(row => getSponsorFromColums(getSponsors(row)))
 
 export async function importSponsors(file) {
   const csv = await readFileAsText(file)

@@ -6,17 +6,11 @@ import { Page, Grid } from '../../core/components'
 import { fields } from './SponsorsHelper'
 import { getSponsors } from './graphql'
 
-class Sponsors extends Component {
-  render() {
-    const { sponsors } = this.props
-
-    return (
-      <Page title="Padrinhos">
-        {sponsors && <Grid keyField="_id" fields={fields} items={sponsors} />}
-      </Page>
-    )
-  }
-}
+const Sponsors = ({ sponsors }) => (
+  <Page title="Padrinhos">
+    {sponsors && <Grid keyField="_id" fields={fields} items={sponsors} />}
+  </Page>
+)
 
 Sponsors.propTypes = {
   sponsors: PropTypes.array
@@ -24,6 +18,6 @@ Sponsors.propTypes = {
 
 export default compose(
   graphql(getSponsors, ({
-    props: ({ data: { sponsors } }) => ({ sponsors })
+    props: ({ data }) => ({ sponsors: data.sponsors })
   }))
 )(Sponsors)

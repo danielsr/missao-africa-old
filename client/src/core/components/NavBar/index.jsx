@@ -1,21 +1,13 @@
 import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
 
-class NavBar extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isOpen: false
-    }
+class NavBar extends PureComponent {
+  state = {
+    isOpen: false
   }
 
-  toggle() {
-    const { isOpen } = this.state
-    this.setState({
-      isOpen: !isOpen
-    })
-  }
+  toggle = () => this.setState(({ isOpen }) => ({ isOpen: !isOpen }))
 
   renderItems() {
     const { items } = this.props

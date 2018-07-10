@@ -8,9 +8,9 @@ export const typeDefs = `
     phone: String!
     cpf: String
   }
-  
+
   input SponsorInput {
-    _id: ID, 
+    _id: ID,
     id: Int!,
     joinDate: String!
     name: String!
@@ -22,7 +22,7 @@ export const typeDefs = `
   type Query {
     sponsors: [Sponsor]
   }
-  
+
   type Mutation {
     importSponsors(input: [SponsorInput]): Boolean
   }
