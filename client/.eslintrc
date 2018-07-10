@@ -1,6 +1,9 @@
 {
   "parser": "babel-eslint",
   "extends": "airbnb",
+  "settings": {
+    "import/resolver": "webpack"
+  },
   "rules": {
     "comma-dangle": "off",
     "semi": [

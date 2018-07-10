@@ -1,4 +1,5 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
 
 module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
@@ -16,7 +17,11 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    alias: {
+      core: path.resolve(__dirname, './src/core')
+    },
+    modules: [path.resolve(__dirname, 'node_modules')],
+    extensions: ['.jsx', '.js']
   },
   devServer: {
     historyApiFallback: true
