@@ -1,7 +1,14 @@
 import map from 'lodash/map'
 import { readFileAsText } from '../../core/util/file'
 
-const csvColumnMap = ['id', 'joinDate', 'cpf', 'name', 'email', 'phone']
+const csvColumnMap = {
+  id: 0,
+  joinDate: 1,
+  cpf: 2,
+  name: 3,
+  email: 4,
+  phone: 5
+}
 
 export const importFields = [
   { name: 'id', label: 'ID' },
@@ -18,7 +25,7 @@ export const fields = [
   { name: 'email', label: 'E-mail' }
 ]
 
-const getSponsorFromColums = cols => reduce(cols, (final, col, i) => ({ ...final, [id]: csvColumnMap[i] }), {})
+const getSponsorFromColums = cols => reduce(csvColumnMap, (final, col, key) => ({ ...final, [key]: cols[col] }), {})
 
 const getSponsors = row => row.substring(row.indexOf('"') + 1, row.lastIndexOf('"') - 2).split('","')
 
