@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import remove from 'lodash/remove'
+import React, { PureComponent } from 'react'
+import reject from 'lodash/reject'
 import { graphql } from 'react-apollo'
 import { connect } from 'react-redux'
 import { compose } from 'recompose'
@@ -9,26 +9,18 @@ import { importSponsors, importFields } from './SponsorsHelper'
 import { importSponsorsMutation } from './graphql'
 
 
-class SponsorsImport extends Component {
+class SponsorsImport extends PureComponent {
   state = {
     sponsors: [],
     selected: []
   }
 
-  onSelect = (checked, item) => {
-    const { selected } = this.state
+  onSelect = (checked, item) =>
+    this.setState(({ selected }) =>
+      ({ selected: checked ? [...selected, item] : reject(selected, { id: item.id }) }))
 
-    if (checked) {
-      selected.push(item)
-    } else {
-      remove(selected, listItem => listItem.id === item.id)
-    }
-
-    this.setState({ selected })
-  }
-
-  importFile = async ({ target: { files } }) => {
-    const sponsors = await importSponsors(files[0])
+  importFile = async ({ target: { files: [file] } }) => {
+    const sponsors = await importSponsors(file)
     this.setState({ sponsors })
   }
 
@@ -57,12 +49,7 @@ class SponsorsImport extends Component {
   }
 }
 
-const mapActions = {
-  setLoading: actions.setLoading,
-  setMsg: actions.setMsg
-}
-
 export default compose(
   graphql(importSponsorsMutation),
-  connect(null, mapActions)
+  connect(null, actions)
 )(SponsorsImport)

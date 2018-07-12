@@ -9,28 +9,20 @@ import Footer from './Footer'
 import Header from './Header'
 import './style.css'
 
-class Main extends Component {
-  render() {
-    const { isLoading, msg, children } = this.props
-    return (
-      <div className="layout">
-        <Header />
-        <div className="main">
-          <span className="fa fa-success" />
-          {children}
-        </div>
-        <Footer />
-        {isLoading && <Spinner />}
-        {msg && <Toast msg={msg} />}
-      </div>
-    )
-  }
-}
+const Main = ({ isLoading, msg, children }) => (
+  <div className="layout">
+    <Header />
+    <div className="main">
+      <span className="fa fa-success" />
+      {children}
+    </div>
+    <Footer />
+    {isLoading && <Spinner />}
+    {msg && <Toast msg={msg} />}
+  </div>
+)
 
-const mapProps = state => ({
-  isLoading: state.isLoading,
-  msg: state.msg
-})
+const mapProps = state => state
 
 const mapActions = {
   setMsg: actions.setMsg
