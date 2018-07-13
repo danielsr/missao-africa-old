@@ -4,8 +4,8 @@
   "description": "Missao Africa",
   "main": "src/index.js",
   "scripts": {
-    "babel": "babel-node src/index.js",
-    "start": "nodemon --exec babel-node src/index.js"
+    "start": "nodemon --exec babel-node src/index.js",
+    "server": "NODE_ENV=prod babel-node src/index.js"
   },
   "author": "Daniel Rodrigues",
   "license": "ISC",

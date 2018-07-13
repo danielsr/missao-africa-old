@@ -1,5 +1,6 @@
 import express from 'express'
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express'
+import path from 'path'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import { makeExecutableSchema } from 'graphql-tools'
@@ -23,5 +24,13 @@ server.use(
 )
 
 server.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }))
+
+if (process.env.NODE_ENV === 'prod') {
+  server.use(express.static(path.resolve(__dirname, '..', 'public')))
+
+  server.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'))
+  })
+}
 
 server.listen(PORT)
