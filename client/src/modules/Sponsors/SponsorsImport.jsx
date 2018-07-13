@@ -15,9 +15,9 @@ class SponsorsImport extends PureComponent {
     selected: []
   }
 
-  onSelect = (checked, item) =>
-    this.setState(({ selected }) =>
-      ({ selected: checked ? [...selected, item] : reject(selected, { id: item.id }) }))
+  onSelect = (checked, item) => this.setState(({ selected }) => (
+    { selected: checked ? [...selected, item] : reject(selected, { id: item.id }) }
+  ))
 
   importFile = async ({ target: { files: [file] } }) => {
     const sponsors = await importSponsors(file)

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import React from 'react'
 import { graphql } from 'react-apollo'
 import { compose } from 'recompose'
 import { Page, Grid } from '../../core/components'
