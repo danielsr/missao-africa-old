@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "NODE_ENV=production npm run start-server --prefix server",
-    "postinstall": "NPM_CONFIG_PRODUCTION=false YARN_PRODUCTION=false npm run install-server --prefix server && npm run install-client --prefix client",
+    "postinstall": "npm run install-server --prefix server && npm run install-client --prefix client",
     "heroku-postbuild": "npm run build-client --prefix client"
   },
   "dependencies": {
