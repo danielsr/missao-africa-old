@@ -9,7 +9,6 @@ import resolvers from './resolvers/sponsors'
 import { typeDefs } from './schema'
 
 const server = express()
-const PORT = 3000
 
 mongoose.connect('mongodb://danielrodrigues:X8jhP3db@ds251197.mlab.com:51197/missaoafrica')
 
@@ -33,4 +32,4 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-server.listen(PORT)
+server.listen(process.env.PORT || 3000)
