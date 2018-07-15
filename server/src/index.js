@@ -25,11 +25,11 @@ server.use(
 
 server.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }))
 
-if (process.env.NODE_ENV === 'prod') {
-  server.use(express.static(path.resolve(__dirname, '..', 'public')))
+if (process.env.NODE_ENV === 'production') {
+  server.use(express.static(path.resolve(__dirname, '..', '..', 'client', 'dist')))
 
   server.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'))
+    res.sendFile(path.resolve(__dirname, '..', '..', 'client', 'dist', 'index.html'))
   })
 }
 

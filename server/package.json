@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
-    "server": "NODE_ENV=prod babel-node src/index.js"
+    "start-server": "babel-node src/index.js",
+    "install-server": "yarn"
   },
   "author": "Daniel Rodrigues",
   "license": "ISC",
