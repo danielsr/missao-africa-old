@@ -10,25 +10,23 @@ import { typeDefs } from './schema'
 
 const server = express()
 
-mongoose.connect('mongodb://danielrodrigues:X8jhP3db@ds251197.mlab.com:51197/missaoafrica')
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true })
+
+if (process.env.NODE_ENV !== 'production') {
+  server.use('*', cors({ origin: 'http://localhost:8080' }))
+}
 
 const schema = makeExecutableSchema({ typeDefs, resolvers })
 
-server.use('*', cors({ origin: 'http://localhost:8080' }))
-
-server.use(
-  '/graphql',
-  bodyParser.json(),
-  graphqlExpress({ schema })
-)
+server.use('/graphql', bodyParser.json(), graphqlExpress({ schema }))
 
 server.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }))
 
 if (process.env.NODE_ENV === 'production') {
-  server.use(express.static(path.resolve(__dirname, '..', '..', 'client', 'dist')))
+  server.use(express.static(path.resolve(__dirname, '..', 'client', 'dist')))
 
   server.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', '..', 'client', 'dist', 'index.html'))
+    res.sendFile(path.resolve(__dirname, '..', 'client', 'dist', 'index.html'))
   })
 }
 
