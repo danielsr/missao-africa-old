@@ -1,0 +1,12 @@
+{
+  "name": "missao-africa",
+  "version": "1.0.0",
+  "description": "Missao Africa",
+  "engines": {
+    "yarn": "1.7.0"
+  },
+  "scripts": {
+    "start": "yarn server --prefix server",
+    "postinstall": "YARN_PRODUCTION=false yarn install --prefix server && yarn install --prefix client && yarn build --prefix client"
+  }
+}
