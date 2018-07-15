@@ -8,10 +8,10 @@
     "yarn": "1.7.0"
   },
   "scripts": {
-    "start": "NODE_ENV=production npm run start-server --prefix server",
-    "dev": "concurrently \"npm run start --prefix server\" \"npm run start --prefix client\"",
-    "postinstall": "npm run install-server --prefix server && npm run install-client --prefix client",
-    "heroku-postbuild": "npm run build-client --prefix client"
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "start": "NODE_ENV=production npm run start --prefix server",
+    "postinstall": "npm run install:server --prefix server && npm run install:client --prefix client",
+    "heroku-postbuild": "npm run build --prefix client"
   },
   "dependencies": {
     "concurrently": "^3.6.0"

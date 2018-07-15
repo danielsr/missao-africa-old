@@ -1,14 +1,9 @@
 {
-  "name": "missao-africa",
-  "version": "1.0.0",
-  "description": "Missao Africa",
-  "author": "Daniel Rodrigues",
-  "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --hot",
-    "build-client": "webpack --mode production",
-    "install-client": "yarn"
+    "dev": "webpack-dev-server --mode development --hot",
+    "build": "webpack --mode production",
+    "install:client": "yarn"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
