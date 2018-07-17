@@ -31,7 +31,7 @@ const getSponsorFromColums = cols => reduce(csvColumnMap, (final, col, key) => (
 
 const getSponsors = row => row.substring(row.indexOf('"') + 1, row.lastIndexOf('"') - 2).split('","')
 
-const getSponsorsFromCsv = csv => csv.split('\n').splice(1, -1)
+const getSponsorsFromCsv = csv => csv.split('\n').slice(1, -1)
   .map(row => getSponsorFromColums(getSponsors(row)))
 
 export async function importSponsors(file) {

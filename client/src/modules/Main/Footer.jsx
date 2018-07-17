@@ -1,7 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 export default () => (
   <div className="footer">
-    <p>© {new Date().getFullYear()} Missão África</p>
+    <div className="container text-center">
+      <p>© {new Date().getFullYear()} Missão África</p>
+    </div>
   </div>
 )

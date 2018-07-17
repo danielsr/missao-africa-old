@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import classNames from 'core/util/classNames'
 
 class Grid extends Component {
   renderHead = () => {
@@ -56,12 +57,10 @@ class Grid extends Component {
   }
 
   render() {
-    const {
-      fields, items, editRoute, deleteRoute, onSelect
-    } = this.props
+    const { fields, items, editRoute, deleteRoute, onSelect, className } = this.props
 
     return (
-      <table className="table fill">
+      <table className={classNames('table fill', className)}>
         <thead>
           <tr>
             {onSelect && (
@@ -96,7 +95,8 @@ Grid.propTypes = {
   keyField: PropTypes.string,
   editRoute: PropTypes.string,
   deleteRoute: PropTypes.string,
-  onSelect: PropTypes.func
+  onSelect: PropTypes.func,
+  className: PropTypes.string
 }
 
 export default Grid

@@ -3,7 +3,7 @@ import reject from 'lodash/reject'
 import { graphql } from 'react-apollo'
 import { connect } from 'react-redux'
 import { compose } from 'recompose'
-import { Page, Grid, Button } from 'core/components'
+import { Page, Grid, Button, InputFile } from 'core/components'
 import { actions } from '../Main/actions'
 import { importSponsors, importFields } from './SponsorsHelper'
 import { importSponsorsMutation } from './graphql'
@@ -11,7 +11,7 @@ import { importSponsorsMutation } from './graphql'
 
 class SponsorsImport extends PureComponent {
   state = {
-    sponsors: [],
+    sponsors: null,
     selected: []
   }
 
@@ -29,9 +29,7 @@ class SponsorsImport extends PureComponent {
     const { selected } = this.state
 
     setLoading(true)
-    await mutate({
-      variables: { input: selected }
-    })
+    await mutate({ variables: { input: selected } })
     setLoading(false)
     setMsg('Padrinhos importados com sucesso!')
   }
@@ -41,9 +39,9 @@ class SponsorsImport extends PureComponent {
 
     return (
       <Page title="Importar Padrinhos">
-        <input type="file" onChange={this.importFile} className="mb-4" />
-        {sponsors && <Grid keyField="id" fields={importFields} items={sponsors} onSelect={this.onSelect} />}
-        <Button text="Importar Selecionados" color="primary" onClick={this.saveSelected} />
+        <InputFile onChange={this.importFile} className="mb-3" />
+        {sponsors && <Grid keyField="id" fields={importFields} items={sponsors} onSelect={this.onSelect} className="mb-4" />}
+        {sponsors && <Button text="Importar Selecionados" color="primary" onClick={this.saveSelected} />}
       </Page>
     )
   }
