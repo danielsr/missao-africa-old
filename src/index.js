@@ -7,18 +7,23 @@ import { makeExecutableSchema } from 'graphql-tools'
 import mongoose from 'mongoose'
 import resolvers from './resolvers/sponsors'
 import { typeDefs } from './schema'
-
-const server = express()
+import auth from './auth'
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true })
+
+const server = express()
+server.use(bodyParser.json())
+server.use(bodyParser.urlencoded({ extended: false }))
 
 if (process.env.NODE_ENV !== 'production') {
   server.use('*', cors({ origin: 'http://localhost:8080' }))
 }
 
+auth(server)
+
 const schema = makeExecutableSchema({ typeDefs, resolvers })
 
-server.use('/graphql', bodyParser.json(), graphqlExpress({ schema }))
+server.use('/graphql', graphqlExpress({ schema }))
 
 server.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }))
 
