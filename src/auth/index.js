@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 import pick from 'lodash/pick'
-import { User } from '../models/users'
+import { User } from '../models'
 
 export default (server) => {
   server.post('/register', (req, res) => {
