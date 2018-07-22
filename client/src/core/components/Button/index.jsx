@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const Button = ({ text, color, onClick }) => (
-  <button type="submit" className={`btn ${color}`} onClick={onClick}>
+const Button = ({ text, color, onClick, submit }) => (
+  <button type={submit ? 'submit' : 'button'} className={`btn ${color}`} onClick={onClick}>
     {text}
   </button>
 )
@@ -10,7 +10,8 @@ const Button = ({ text, color, onClick }) => (
 Button.propTypes = {
   text: PropTypes.string.isRequired,
   color: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  submit: PropTypes.bool
 }
 
 Button.defaultProps = {

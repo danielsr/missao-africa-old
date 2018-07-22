@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import React from 'react'
 
 const Page = ({ title, children }) => (
   <div className="container">

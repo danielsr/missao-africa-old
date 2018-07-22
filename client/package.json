@@ -29,15 +29,16 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
-    "apollo-client-preset": "^1.0.8",
+    "apollo-boost": "^0.1.10",
+    "final-form": "^4.8.3",
     "graphql": "^0.13.2",
-    "graphql-tag": "^2.9.2",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "prop-types": "^15.6.2",
     "react": "^16.4.0",
     "react-apollo": "^2.1.8",
     "react-dom": "^16.4.0",
+    "react-final-form": "^3.6.5",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "reactstrap": "^6.2.0",

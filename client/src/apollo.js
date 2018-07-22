@@ -1,27 +1,21 @@
-import { ApolloClient, HttpLink, InMemoryCache, ApolloLink, concat } from 'apollo-client-preset'
-
-const cache = new InMemoryCache()
+import ApolloClient from 'apollo-boost'
 
 const uri = process.env.NODE_ENV === 'production' ? '/graphql' : 'http://localhost:3000/graphql'
 
-const httpLink = new HttpLink({ uri })
-
+/* eslint-disable no-undef */
 const token = localStorage.getItem('token')
 
-const middleware = new ApolloLink((operation, forward) => {
-  operation.setContext(({ headers = {} }) => ({
-    headers: {
-      ...headers,
-      'x-access-token': token,
-    }
-  }))
-
-  return forward(operation);
-})
-
 const client = new ApolloClient({
-  cache,
-  link: concat(middleware, httpLink)
+  uri,
+  headers: {
+    'x-access-token': token
+  },
+  onError: ({ networkError }) => {
+    if (networkError.statusCode === 401) {
+      window.location = '/login'
+    }
+  }
 })
+/* eslint-enable */
 
 export default client

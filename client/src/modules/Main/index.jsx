@@ -1,5 +1,5 @@
 import PropType from 'prop-types'
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'recompose'
 import { withRouter } from 'react-router-dom'
@@ -13,7 +13,6 @@ const Main = ({ isLoading, msg, children }) => (
   <div className="layout">
     <Header />
     <div className="main">
-      <span className="fa fa-success" />
       {children}
     </div>
     <Footer />
